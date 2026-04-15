@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic
+insightface
+onnxruntime
+numpy
+opencv-python
+Pillow
+geopy
+python-dateutil

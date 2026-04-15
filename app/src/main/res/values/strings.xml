@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Intelligent Gallery</string>
+    <string name="search_hint">Search photos naturally...</string>
+    <string name="index_images">Index images</string>
+    <string name="empty_results">No matching images yet.</string>
+</resources>
