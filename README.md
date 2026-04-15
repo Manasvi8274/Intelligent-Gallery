@@ -28,9 +28,8 @@ See `ai-service/README.md`.
 
 ## Current implemented flow
 
-- Search box accepts natural language query.
-- Query is sent to Python AI parser (`/parse_query`).
-- Parsed filters are applied in local Room DB with AND logic.
-- Demo data is pre-seeded to validate the flow.
-
-Next implementation step is real MediaStore indexing + `/enrich_image` for each local image.
+- App asks media permissions on launch (images/video/audio).
+- After permission, app scans device gallery through MediaStore.
+- On-device ML Kit face detection runs for newly indexed images.
+- Unknown faces are shown one-by-one with cropped preview for naming.
+- Entered names are saved in local Room DB and used for future auto-match.

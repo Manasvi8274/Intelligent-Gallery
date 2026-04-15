@@ -19,7 +19,8 @@ data class ImageEntity(
     val nearestLandmark: String?,
     val occasion: String?,
     val peopleIds: List<Long>,
-    val aiEnrichedAtEpochMs: Long?
+    val aiEnrichedAtEpochMs: Long?,
+    val faceScanDone: Boolean
 )
 
 @Entity(tableName = "people")
@@ -28,4 +29,31 @@ data class PersonEntity(
     val name: String,
     val aliases: List<String>,
     val embeddingProfilePath: String?
+)
+
+@Entity(
+    tableName = "faces",
+    indices = [Index("imageId"), Index("personId")]
+)
+data class FaceEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val imageId: Long,
+    val personId: Long?,
+    val faceIndex: Int,
+    val bboxLeft: Int,
+    val bboxTop: Int,
+    val bboxRight: Int,
+    val bboxBottom: Int,
+    val signature: List<Float>
+)
+
+data class UnknownFaceRow(
+    val faceId: Long,
+    val imageId: Long,
+    val contentUri: String,
+    val faceIndex: Int,
+    val bboxLeft: Int,
+    val bboxTop: Int,
+    val bboxRight: Int,
+    val bboxBottom: Int
 )

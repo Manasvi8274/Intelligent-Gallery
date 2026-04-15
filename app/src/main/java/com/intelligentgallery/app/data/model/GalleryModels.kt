@@ -1,5 +1,7 @@
 package com.intelligentgallery.app.data.model
 
+import android.graphics.Bitmap
+
 data class GalleryImage(
     val id: Long,
     val contentUri: String,
@@ -17,4 +19,12 @@ data class SearchQuery(
     val startEpochMs: Long?,
     val endEpochMs: Long?,
     val excludePeopleNames: List<String>
+)
+
+data class PendingFaceLabel(
+    val faceId: Long,
+    val imageId: Long,
+    val imageUri: String,
+    val personNumber: Int,
+    val cropBitmap: Bitmap
 )

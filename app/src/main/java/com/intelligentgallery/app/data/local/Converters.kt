@@ -19,4 +19,14 @@ class Converters {
     @TypeConverter
     fun toStringList(value: String): List<String> =
         value.takeIf { it.isNotBlank() }?.split("|") ?: emptyList()
+
+    @TypeConverter
+    fun fromFloatList(value: List<Float>): String = value.joinToString(",")
+
+    @TypeConverter
+    fun toFloatList(value: String): List<Float> =
+        value.takeIf { it.isNotBlank() }
+            ?.split(",")
+            ?.mapNotNull { it.toFloatOrNull() }
+            ?: emptyList()
 }
